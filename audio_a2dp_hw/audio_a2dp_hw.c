@@ -194,7 +194,7 @@ static void ts_error_log(char *tag, int val, int buff_size, struct a2dp_config c
     prev = now;
     if(diff_us > (unsigned long long)(calc_audiotime (cfg, buff_size) + 10000L))
     {
-       ERROR("[%s] ts %08lld, diff %08lld, val %d %d", tag, now_us, diff_us, val, buff_size);
+       DEBUG("[%s] ts %08lld, diff %08lld, val %d %d", tag, now_us, diff_us, val, buff_size);
     }
 }
 
@@ -804,7 +804,7 @@ static size_t out_get_buffer_size(const struct audio_stream *stream)
     const size_t period_size = out->common.buffer_sz / AUDIO_STREAM_OUTPUT_BUFFER_PERIODS;
     const size_t mixer_unit_size = 16 /* frames */ * 4 /* framesize */;
 
-    INFO("socket buffer size: %zu  period size: %zu", out->common.buffer_sz, period_size);
+    DEBUG("socket buffer size: %zu  period size: %zu", out->common.buffer_sz, period_size);
     if (period_size % mixer_unit_size != 0) {
         ERROR("period size %zu not a multiple of %zu", period_size, mixer_unit_size);
     }
